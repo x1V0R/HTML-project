@@ -5,6 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Display the interface of the device friendly and fit the content with the device's width -->
   <title>Chỉ số AQ cho học sinh THPT</title> <!-- Display the tab's title while opening it -->
   <script src="https://cdn.tailwindcss.com"></script> <!-- Embedding the Tailwind CSS - a framework CSS that helps creating the interface rapidly -->
+      <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+        .fullscreen {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 10;
+        }
+        .hidden {
+            display: none !important;
+        }
+        .mainpage {
+            height: 100vh;
+            width: 100vw;
+            background: #d6f5d6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
 </head> <!-- Then close the head tag -->
 <body class="bg-gray-100 text-gray-800"> <!-- This is the body where the content will be displayed on the interface --> 
 <form id="quiz-form">

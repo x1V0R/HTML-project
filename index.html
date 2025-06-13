@@ -7,7 +7,35 @@
   <script src="https://cdn.tailwindcss.com"></script> <!-- Embedding the Tailwind CSS - a framework CSS that helps creating the interface rapidly -->
 </head> <!-- Then close the head tag -->
 <body class="bg-gray-100 text-gray-800"> <!-- This is the body where the content will be displayed on the interface --> 
+<form id="quiz-form">
+        <h3>1. 2 + 2 = ?</h3>
+        <input type="radio" name="q1" value="3"> 3<br>
+        <input type="radio" name="q1" value="4"> 4<br>
+        <input type="radio" name="q1" value="5"> 5<br>
 
+        <h3>2. Trái đất hình gì?</h3>
+        <input type="radio" name="q2" value="Vuông"> Vuông<br>
+        <input type="radio" name="q2" value="Tròn"> Tròn<br>
+        <input type="radio" name="q2" value="Tam giác"> Tam giác<br>
+
+        <button type="button" onclick="submitQuiz()">Nộp bài</button>
+    </form>
+    <div id="result"></div>
+
+    <script>
+        function submitQuiz() {
+            let score = 0;
+            const answers = {
+                q1: "4",
+                q2: "Tròn"
+            };
+            const form = document.forms["quiz-form"];
+            if (form["q1"].value === answers.q1) score++;
+            if (form["q2"].value === answers.q2) score++;
+
+            document.getElementById("result").innerText = "Bạn được " + score + " / 2 điểm!";
+        }
+    </script>
   <!-- Navbar --> 
   <header class="bg-white shadow"> <!-- Change the header background to white shadow -->
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center"> <!-- The maximum of screen height, padding left and right(px),

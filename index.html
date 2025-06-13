@@ -37,20 +37,10 @@
     </style>
 </head> <!-- Then close the head tag -->
 <body class="bg-gray-100 text-gray-800"> <!-- This is the body where the content will be displayed on the interface --> 
-<form id="quiz-form">
-        <h3>1. 2 + 2 = ?</h3>
-        <input type="radio" name="q1" value="3"> 3<br>
-        <input type="radio" name="q1" value="4"> 4<br>
-        <input type="radio" name="q1" value="5"> 5<br>
-
-        <h3>2. Trái đất hình gì?</h3>
-        <input type="radio" name="q2" value="Vuông"> Vuông<br>
-        <input type="radio" name="q2" value="Tròn"> Tròn<br>
-        <input type="radio" name="q2" value="Tam giác"> Tam giác<br>
-
-        <button type="button" onclick="submitQuiz()">Nộp bài</button>
-    </form>
-    <div id="result"></div>
+ <div id="mainScreen" class="mainpage hidden">
+        <h1>Chào mừng bạn đến trang chính!</h1>
+        <p>Bạn đã hoàn thành bài đánh giá.</p>
+    </div>
 
     <script>
         function submitQuiz() {
@@ -64,6 +54,11 @@
             if (form["q2"].value === answers.q2) score++;
 
             document.getElementById("result").innerText = "Bạn được " + score + " / 2 điểm!";
+            setTimeout(function() {
+                // Ẩn quiz, hiện trang chính
+                document.getElementById("quizScreen").classList.add("hidden");
+                document.getElementById("mainScreen").classList.remove("hidden");
+            }, 1500); // Đợi 1.5 giây để xem điểm rồi chuyển trang
         }
     </script>
   <!-- Navbar --> 

@@ -108,6 +108,11 @@
   </footer>
 
   <script>
+    function nextSlide(currentId, nextId) {
+      document.getElementById(currentId).classList.add('hidden');
+      document.getElementById(nextId).classList.remove('hidden');
+    }
+
     function submitQuiz() {
       let score = 0;
       const answers = {
@@ -119,11 +124,8 @@
       if (form["q2"].value === answers.q2) score++;
 
       document.getElementById("result").innerText = "Bạn được " + score + " / 2 điểm!";
-      setTimeout(function() {
-        // Ẩn quiz, hiện trang chính
-        document.getElementById("quizScreen").classList.add("hidden");
-        document.getElementById("mainScreen").classList.remove("hidden");
-      }, 1500); // Đợi 1.5 giây để xem điểm rồi chuyển trang
+      // Hiện nút tiếp tục
+      document.getElementById("nextBtnWrap").classList.remove("hidden");
     }
   </script>
 

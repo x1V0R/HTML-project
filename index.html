@@ -66,14 +66,17 @@
       <div class="text-center mt-4 hidden" id="nextBtnWrap">
         <button type="button" onclick="nextSlide('slide4', 'slide5')" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">Tiếp tục</button>
       </div>
+    </form>
   </div>
 
   <!-- Slide 5: Kết quả -->
-  <div id="result" class="text-green-600 font-bold text-center"></div>
-  <div class="text-center mt-4 hidden" id="nextBtnWap">
-    <button type="button" oneclick="nextSlide('slide5', 'mainScreen')" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">Tiếp tuc</button>
+  <div id="slide5" class="fixed inset-0 flex items-center justify-center bg-black z-50 hidden"></div>
+  <div class="p-8 rounded-xl shadow-lg w-full max-w-md text-center">
+      <h2 class="text-2xl font-bold mb-4">Kết quả của bạn</h2>
+      <div id="result" class="text-green-600 font-bold text-xl mb-6"></div>
+      <button type="button" onclick="nextSlide('slide5', 'mainScreen')" class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700 transition">Tiếp tục</button>
+    </div>
   </div>
-</form>
   
   <!-- Navbar --> 
   <header class="bg-white shadow"> <!-- Change the header background to white shadow -->
@@ -128,9 +131,9 @@
       if (form["q1"].value === answers.q1) score++;
       if (form["q2"].value === answers.q2) score++;
 
+      document.getElementById("slide4").classList.add("hidden");
+      document.getElementById("slide5").classList.remove("hidden");
       document.getElementById("result").innerText = "Bạn được " + score + " / 2 điểm!";
-      // Hiện nút tiếp tục
-      document.getElementById("nextBtnWrap").classList.remove("hidden");
     }
   </script>
 

@@ -5,62 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Display the interface of the device friendly and fit the content with the device's width -->
   <title>Chỉ số AQ cho học sinh THPT</title> <!-- Display the tab's title while opening it -->
   <script src="https://cdn.tailwindcss.com"></script> <!-- Embedding the Tailwind CSS - a framework CSS that helps creating the interface rapidly -->
-      <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-        }
-        .fullscreen {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: #f4f4f4;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 10;
-        }
-        .hidden {
-            display: none !important;
-        }
-        .mainpage {
-            height: 100vh;
-            width: 100vw;
-            background: #d6f5d6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-    </style>
 </head> <!-- Then close the head tag -->
+  
 <body class="bg-gray-100 text-gray-800"> <!-- This is the body where the content will be displayed on the interface --> 
- <div id="mainScreen" class="mainpage hidden">
-        <h1>Chào mừng bạn đến trang chính!</h1>
-        <p>Bạn đã hoàn thành bài đánh giá.</p>
-    </div>
+  <!-- Quiz Screen (Full screen overlay) -->
+  <div id="quizScreen" class="fixed inset-0 flex items-center justify-center bg-white z-50">
+    <form id="quiz-form" class="bg-gray-50 p-8 rounded-xl shadow-lg w-full max-w-md">
+      <h2 class="text-2xl font-bold mb-6 text-center">Bài đánh giá nhanh</h2>
+      <div class="mb-6">
+        <label class="block font-semibold mb-2">1. 2 + 2 = ?</label>
+        <div>
+          <input type="radio" name="q1" value="3" id="q1a"><label for="q1a" class="ml-2">3</label><br>
+          <input type="radio" name="q1" value="4" id="q1b"><label for="q1b" class="ml-2">4</label><br>
+          <input type="radio" name="q1" value="5" id="q1c"><label for="q1c" class="ml-2">5</label>
+        </div>
+      </div>
+      <div class="mb-6">
+        <label class="block font-semibold mb-2">2. Trái đất hình gì?</label>
+        <div>
+          <input type="radio" name="q2" value="Vuông" id="q2a"><label for="q2a" class="ml-2">Vuông</label><br>
+          <input type="radio" name="q2" value="Tròn" id="q2b"><label for="q2b" class="ml-2">Tròn</label><br>
+          <input type="radio" name="q2" value="Tam giác" id="q2c"><label for="q2c" class="ml-2">Tam giác</label>
+        </div>
+      </div>
+      <div class="text-center mb-4">
+        <button type="button" onclick="submitQuiz()" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Nộp bài</button>
+      </div>
+      <div id="result" class="text-green-600 font-bold text-center"></div>
+    </form>
+  </div>
 
-    <script>
-        function submitQuiz() {
-            let score = 0;
-            const answers = {
-                q1: "4",
-                q2: "Tròn"
-            };
-            const form = document.forms["quiz-form"];
-            if (form["q1"].value === answers.q1) score++;
-            if (form["q2"].value === answers.q2) score++;
-
-            document.getElementById("result").innerText = "Bạn được " + score + " / 2 điểm!";
-            setTimeout(function() {
-                // Ẩn quiz, hiện trang chính
-                document.getElementById("quizScreen").classList.add("hidden");
-                document.getElementById("mainScreen").classList.remove("hidden");
-            }, 1500); // Đợi 1.5 giây để xem điểm rồi chuyển trang
-        }
-    </script>
   <!-- Navbar --> 
   <header class="bg-white shadow"> <!-- Change the header background to white shadow -->
     <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center"> <!-- The maximum of screen height, padding left and right(px),
@@ -98,6 +72,26 @@
       © 2025 My App. All rights reserved.
     </div>
   </footer>
+
+  <script>
+    function submitQuiz() {
+      let score = 0;
+      const answers = {
+        q1: "4",
+        q2: "Tròn"
+      };
+      const form = document.forms["quiz-form"];
+      if (form["q1"].value === answers.q1) score++;
+      if (form["q2"].value === answers.q2) score++;
+
+      document.getElementById("result").innerText = "Bạn được " + score + " / 2 điểm!";
+      setTimeout(function() {
+        // Ẩn quiz, hiện trang chính
+        document.getElementById("quizScreen").classList.add("hidden");
+        document.getElementById("mainScreen").classList.remove("hidden");
+      }, 1500); // Đợi 1.5 giây để xem điểm rồi chuyển trang
+    }
+  </script>
 
 </body>
 </html>

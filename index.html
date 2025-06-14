@@ -10,7 +10,7 @@
 <body class="bg-gray-100 text-gray-800"> <!-- This is the body where the content will be displayed on the interface --> 
     <!-- Slide 1: Giới thiệu -->
   <div id="slide1" class="fixed inset-0 flex items-center justify-center bg-black z-50">
-    <div class="p-8 rounded-xl shadow-lg w-full max-w-md text-center">
+    <div class="p-8 rounded-xl shadow-lg w-full max-w-md text-center bg-white shadow">
       <h2 class="text-2xl font-bold mb-4">Chào mừng bạn đến với ứng dụng đánh giá AQ!</h2>
       <p class="mb-8">Ứng dụng giúp bạn kiểm tra chỉ số AQ một cách nhanh chóng và dễ dàng.</p>
       <button onclick="nextSlide('slide1', 'slide2')" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Tiếp tục</button>
@@ -19,7 +19,7 @@
 
   <!-- Slide 2: Nội dung -->
   <div id="slide2" class="fixed inset-0 flex items-center justify-center bg-black z-50 hidden">
-    <div class="p-8 rounded-xl shadow-lg w-full max-w-md text-center">
+    <div class="p-8 rounded-xl shadow-lg w-full max-w-md text-center bg-whiteshadow">
       <h2 class="text-2xl font-bold mb-4">Bạn sẽ trải qua các phần sau:</h2>
       <ul class="mb-8 text-left list-disc list-inside">
         <li>Giới thiệu về AQ</li>
@@ -32,7 +32,7 @@
 
   <!-- Slide 3: Hướng dẫn -->
   <div id="slide3" class="fixed inset-0 flex items-center justify-center bg-black z-50 hidden">
-    <div class="p-8 rounded-xl shadow-lg w-full max-w-md text-center">
+    <div class="p-8 rounded-xl shadow-lg w-full max-w-md text-center bg-white shadow">
       <h2 class="text-2xl font-bold mb-4">Lưu ý</h2>
       <p class="mb-8">Hãy trả lời trung thực các câu hỏi để kết quả đánh giá chính xác nhất.</p>
       <button onclick="nextSlide('slide3', 'slide4')" class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 transition">Bắt đầu đánh giá</button>
@@ -41,7 +41,7 @@
 
   <!-- Slide 4: Bài đánh giá (Quiz) -->
   <div id="slide4" class="fixed inset-0 flex items-center justify-center bg-black z-50 hidden">
-    <form id="quiz-form" class="bg-gray-50 p-8 rounded-xl shadow-lg w-full max-w-md">
+    <form id="quiz-form" class="bg-gray-50 p-8 rounded-xl shadow-lg w-full max-w-md bg-white shadow">
       <h2 class="text-2xl font-bold mb-6 text-center">Bài đánh giá nhanh</h2>
       <div class="mb-6">
         <label class="block font-semibold mb-2">1. 2 + 2 = ?</label>

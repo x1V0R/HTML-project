@@ -92,7 +92,7 @@
   </header>
 
   <!-- Main Content -->
-  <main class="max-w-7xl mx-auto px-4 py-8">
+  <main id="mainScreen" class=" max-w-7xl mx-auto px-4 py-8">
     <section class="mb-8"> <!-- [mb - Margin below, ma - Margin above] -->
       <h2 class="text-2xl font-semibold mb-4">Chào mừng bạn đến với ứng dụng</h2>
       <p class="text-gray-700">Đây là nơi nội dung chính của bạn sẽ hiển thị.</p>
@@ -107,6 +107,33 @@
     </div>
   </main>
 
+<!-- Page 1 -->
+  <div id="page1" class="page visible">
+    <div class="header">KIỂM TRA (Header 1)</div>
+    <div style="text-align:center;">
+      <p>Kiểm tra.</p>
+      <button class="btn" onclick="goToPage('page2')">Đi sang trang phụ</button>
+    </div>
+  </div>
+
+  <!-- Page 2 -->
+  <div id="page2" class="page">
+    <div class="header">THỬ THÁCH (Header 2)</div>
+    <div style="text-align:center;">
+      <p>Thử thách.</p>
+      <button class="btn" onclick="goBack()">Quay lại</button>
+    </div>
+  </div>
+
+   <!-- Page 3 -->
+  <div id="page2" class="page">
+    <div class="header">BÀI TẬP (Header 2)</div>
+    <div style="text-align:center;">
+      <p>Bài tập.</p>
+      <button class="btn" onclick="goBack()">Quay lại</button>
+    </div>
+  </div>
+  
   <!-- Footer -->
   <footer class="bg-white mt-12 py-4 border-t">
     <div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-500">
@@ -114,12 +141,12 @@
     </div>
   </footer>
 
-  <script>
+  <script> // This is the Javascript part where the function will work
     function nextSlide(currentId, nextId) {
       document.getElementById(currentId).classList.add('hidden');
       document.getElementById(nextId).classList.remove('hidden');
     }
-
+    
     function submitQuiz() {
       let score = 0;
       const answers = {
@@ -134,6 +161,33 @@
       document.getElementById("slide5").classList.remove("hidden");
       document.getElementById("result").innerText = "Bạn được " + score + " / 2 điểm!";
     }
+
+    let pageHistory = [];
+
+    function goToPage(pageId) {
+      // Ẩn tất cả các trang
+      document.querySelectorAll('.page').forEach(el => el.classList.remove('visible'));
+      // Hiện trang mới
+      document.getElementById(pageId).classList.add('visible');
+      // Thêm vào lịch sử
+      pageHistory.push(pageId);
+    }
+
+    function goBack() {
+      // Xóa trang hiện tại khỏi lịch sử
+      pageHistory.pop();
+      // Xem trang trước là gì, nếu không có thì về page1
+      const prev = pageHistory.length ? pageHistory[pageHistory.length - 1] : 'mainScreen';
+      // Ẩn tất cả trang
+      document.querySelectorAll('.page').forEach(el => el.classList.remove('visible'));
+      // Hiện trang trước
+      document.getElementById(prev).classList.add('visible');
+    }
+    // Khi mở trang, mặc định page1 trong history
+    window.onload = function() {
+      pageHistory = ['mainScreen'];
+    };
+    
   </script>
 
 </body>

@@ -84,9 +84,9 @@
       <!-- Division is a storage to store the elements so it is known as parent element -->
       <h1 class="text-xl font-bold">AQ</h1> <!-- text size and font's style --> <!-- Also the heading is a ranking about priorities -->
       <nav class="flex flex-row space-x-4"> <!-- Create space between the child elements [x-4 -> create 16 px space between them by row, y-4 -> same space but by column] -->
-        <a href="#" class="text-blue-600 hover:underline">Kiểm tra</a>
-        <a href="#" class="text-blue-600 hover:underline">Thử thách</a>
-        <a href="#" class="text-blue-600 hover:underline">Bài tập</a>
+        <a href="#" class="text-blue-600 hover:underline" onclick="showPage('examScreen')">Kiểm tra</a>
+        <a href="#" class="text-blue-600 hover:underline" onclick="showPage('challengeScreen')">Thử thách</a>
+        <a href="#" class="text-blue-600 hover:underline" onclick="showPage('exerciseScreen')">Bài tập</a>
       </nav>
     </div>
   </header>
@@ -106,6 +106,9 @@
       </div>
     </div>
   </main>
+
+  <!-- Kiểm tra -->
+<div id="KT" class=
   
   <!-- Footer -->
   <footer class="bg-white mt-12 py-4 border-t">
@@ -160,7 +163,17 @@
     window.onload = function() {
       pageHistory = ['mainScreen'];
     };
-    
+
+    function showPage(pageId) {
+  // Ẩn tất cả các trang
+  document.getElementById('mainScreen').classList.add('hidden');
+  document.getElementById('testScreen').classList.add('hidden');
+  document.getElementById('challengeScreen').classList.add('hidden');
+  document.getElementById('exerciseScreen').classList.add('hidden');
+  // Hiện trang được chọn
+  document.getElementById(pageId).classList.remove('hidden');
+}
+ 
   </script>
 
 </body>

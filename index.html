@@ -84,9 +84,9 @@
       <!-- Division is a storage to store the elements so it is known as parent element -->
       <h1 id="Logo" class="text-xl font-bold">AQ</h1> <!-- text size and font's style --> <!-- Also the heading is a ranking about priorities -->
       <nav class="flex flex-row space-x-4"> <!-- Create space between the child elements [x-4 -> create 16 px space between them by row, y-4 -> same space but by column] -->
-        <a href="#" class="text-blue-600 hover:underline" onclick="showPage('examScreen')">Kiểm tra</a>
-        <a href="#" class="text-blue-600 hover:underline" onclick="showPage('challengeScreen')">Thử thách</a>
-        <a href="#" class="text-blue-600 hover:underline" onclick="showPage('exerciseScreen')">Bài tập</a>
+        <a href="#" class="text-blue-600 hover:underline" onclick="showPage('KT')">Kiểm tra</a>
+        <a href="#" class="text-blue-600 hover:underline" onclick="showPage('TT')">Thử thách</a>
+        <a href="#" class="text-blue-600 hover:underline" onclick="showPage('BT')">Bài tập</a>
         <button id="Back" onclick="goBack()" class="text-blue-600 hover:underline hidden">Quay lại</button>
       </nav>
     </div>
@@ -109,15 +109,15 @@
   </main>
 
   <!-- Kiểm tra -->
-<div id="KT" class="absolute inset-0 p-8 bg-green-50 hidden">
+<div id="KT" class="page absolute inset-0 p-8 bg-green-50 hidden">
   <h2 class="text-2xl font-bold mb-4">Đây là trang Kiểm tra</h2>
       <p>Nội dung kiểm tra ở đây.</p>
     </div>
-    <div id="TT" class="absolute inset-0 p-8 bg-yellow-50 hidden">
+    <div id="TT" class="page absolute inset-0 p-8 bg-yellow-50 hidden">
       <h2 class="text-2xl font-bold mb-4">Đây là trang Thử thách</h2>
       <p>Nội dung thử thách ở đây.</p>
     </div>
-    <div id="BT" class="absolute inset-0 p-8 bg-pink-50 hidden">
+    <div id="BT" class="page absolute inset-0 p-8 bg-pink-50 hidden">
       <h2 class="text-2xl font-bold mb-4">Đây là trang Bài tập</h2>
       <p>Nội dung bài tập ở đây.</p>
     </div>
@@ -160,7 +160,10 @@
     document.getElementById(pageId).classList.remove('hidden');
     // Thêm vào lịch sử
     pageHistory.push(pageId);
-
+    if (pageHistory[pageHistory.length - 1] !== pageId) {
+  pageHistory.push(pageId);
+}
+    
     // Xử lý AQ và nút Back
     const logo = document.getElementById('Logo');
     const btnBack = document.getElementById('Back');

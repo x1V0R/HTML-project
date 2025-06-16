@@ -179,6 +179,28 @@ window.onload = function() {
   document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
   document.getElementById('mainScreen').classList.remove('hidden');
 };
+
+function showPage(pageId) {
+  // Ẩn tất cả các trang
+  ['mainScreen', 'KT', 'TT', 'BT'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.classList.add('hidden');
+  });
+
+  // Hiện đúng trang được chọn
+  document.getElementById(pageId).classList.remove('hidden');
+
+  // Xử lý AQ và nút Back
+  const logo = document.getElementById('logoAQ');
+  const btnBack = document.getElementById('Back');
+  if (pageId === 'mainScreen') {
+    logo.classList.remove('hidden');
+    btnBack.classList.add('hidden');
+  } else {
+    logo.classList.add('hidden');
+    btnBack.classList.remove('hidden');
+  }
+}    
     
   </script>
 

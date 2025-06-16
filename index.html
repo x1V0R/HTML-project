@@ -87,7 +87,7 @@
         <a href="#" class="text-blue-600 hover:underline" onclick="showPage('examScreen')">Kiểm tra</a>
         <a href="#" class="text-blue-600 hover:underline" onclick="showPage('challengeScreen')">Thử thách</a>
         <a href="#" class="text-blue-600 hover:underline" onclick="showPage('exerciseScreen')">Bài tập</a>
-        <button id="Back" onclick="showPage('mainScreen')" class="text-blue-600 hover:underline hidden">Quay lại</button>
+        <button id="Back" onclick="goBack()" class="text-blue-600 hover:underline hidden">Quay lại</button>
       </nav>
     </div>
   </header>
@@ -151,56 +151,58 @@
       document.getElementById("result").innerText = "Bạn được " + score + " / 2 điểm!";
     }
 
-  let pageHistory = [];
+ let pageHistory = [];
 
-function goToPage(pageId) {
-  // Ẩn tất cả các trang
-  document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
-  // Hiện trang mới
-  document.getElementById(pageId).classList.remove('hidden');
-  // Thêm vào lịch sử
-  pageHistory.push(pageId);
-}
+  function showPage(pageId) {
+    // Ẩn tất cả các trang
+    document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
+    // Hiện trang mới
+    document.getElementById(pageId).classList.remove('hidden');
+    // Thêm vào lịch sử
+    pageHistory.push(pageId);
 
-function goBack() {
-  // Xóa trang hiện tại khỏi lịch sử
-  pageHistory.pop();
-  // Xem trang trước là gì, nếu không có thì về mainScreen
-  const prev = pageHistory.length ? pageHistory[pageHistory.length - 1] : 'mainScreen';
-  // Ẩn tất cả trang
-  document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
-  // Hiện trang trước
-  document.getElementById(prev).classList.remove('hidden');
-}
-
-window.onload = function() {
-  pageHistory = ['mainScreen'];
-  // Đảm bảo hiển thị đúng trang đầu
-  document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
-  document.getElementById('mainScreen').classList.remove('hidden');
-};
-
-function showPage(pageId) {
-  // Ẩn tất cả các trang
-  ['mainScreen', 'KT', 'TT', 'BT'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.classList.add('hidden');
-  });
-
-  // Hiện đúng trang được chọn
-  document.getElementById(pageId).classList.remove('hidden');
-
-  // Xử lý AQ và nút Back
-  const logo = document.getElementById('Logo');
-  const btnBack = document.getElementById('Back');
-  if (pageId === 'mainScreen') {
-    logo.classList.remove('hidden');
-    btnBack.classList.add('hidden');
-  } else {
-    logo.classList.add('hidden');
-    btnBack.classList.remove('hidden');
+    // Xử lý AQ và nút Back
+    const logo = document.getElementById('Logo');
+    const btnBack = document.getElementById('Back');
+    if (pageId === 'mainScreen') {
+      logo.classList.remove('hidden');
+      btnBack.classList.add('hidden');
+    } else {
+      logo.classList.add('hidden');
+      btnBack.classList.remove('hidden');
+    }
   }
-}    
+
+  function goBack() {
+    // Xóa trang hiện tại khỏi lịch sử
+    pageHistory.pop();
+    // Xem trang trước là gì, nếu không có thì về mainScreen
+    const prev = pageHistory.length ? pageHistory[pageHistory.length - 1] : 'mainScreen';
+    // Ẩn tất cả trang
+    document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
+    // Hiện trang trước
+    document.getElementById(prev).classList.remove('hidden');
+
+    // Xử lý AQ và nút Back
+    const logo = document.getElementById('Logo');
+    const btnBack = document.getElementById('Back');
+    if (prev === 'mainScreen') {
+      logo.classList.remove('hidden');
+      btnBack.classList.add('hidden');
+    } else {
+      logo.classList.add('hidden');
+      btnBack.classList.remove('hidden');
+    }
+  }
+
+  window.onload = function() {
+    pageHistory = ['mainScreen'];
+    document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
+    document.getElementById('mainScreen').classList.remove('hidden');
+    // Đảm bảo trạng thái đúng lúc đầu
+    document.getElementById('Logo').classList.remove('hidden');
+    document.getElementById('Back').classList.add('hidden');
+  };
     
   </script>
 

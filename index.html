@@ -179,45 +179,6 @@ window.onload = function() {
   document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
   document.getElementById('mainScreen').classList.remove('hidden');
 };
-   
-    function showPage(pageId) {
-      // 1. Ẩn tất cả các trang
-      const pages = ['mainScreen', 'testScreen', 'challengeScreen', 'exerciseScreen'];
-      pages.forEach(id => {
-        document.getElementById(id).classList.add('hidden');
-      });
-      // 2. Hiện trang được chọn
-      document.getElementById(pageId).classList.remove('hidden');
-      
-      // 3. Xử lý ẩn/hiện header/menu/nút back
-      if(pageId === 'mainScreen') {
-        document.getElementById('mainLogo').classList.remove('hidden');
-        document.getElementById('btnTest').classList.remove('hidden');
-        document.getElementById('btnChallenge').classList.remove('hidden');
-        document.getElementById('btnExercise').classList.remove('hidden');
-        document.getElementById('btnBack').classList.add('hidden');
-      } else if(pageId === 'testScreen') {
-        document.getElementById('mainLogo').classList.add('hidden');
-        document.getElementById('btnTest').classList.add('hidden');   // Ẩn nút Kiểm tra
-        document.getElementById('btnChallenge').classList.remove('hidden');
-        document.getElementById('btnExercise').classList.remove('hidden');
-        document.getElementById('btnBack').classList.remove('hidden'); // Hiện nút Quay lại
-      } else if(pageId === 'challengeScreen') {
-        document.getElementById('mainLogo').classList.add('hidden');
-        document.getElementById('btnTest').classList.remove('hidden');
-        document.getElementById('btnChallenge').classList.add('hidden');
-        document.getElementById('btnExercise').classList.remove('hidden');
-        document.getElementById('btnBack').classList.remove('hidden');
-      } else if(pageId === 'exerciseScreen') {
-        document.getElementById('mainLogo').classList.add('hidden');
-        document.getElementById('btnTest').classList.remove('hidden');
-        document.getElementById('btnChallenge').classList.remove('hidden');
-        document.getElementById('btnExercise').classList.add('hidden');
-        document.getElementById('btnBack').classList.remove('hidden');
-      }
-    }
-    // Hiện trang chính khi load
-    showPage('mainScreen');
     
   </script>
 

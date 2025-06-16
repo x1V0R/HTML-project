@@ -83,11 +83,11 @@
       padding above and below (py) [1 rem = 16px][Column - adjust to the middle of above and below, Row - adjust to the middle of left and right] -->
       <!-- Division is a storage to store the elements so it is known as parent element -->
       <h1 id="Logo" class="text-xl font-bold">AQ</h1> <!-- text size and font's style --> <!-- Also the heading is a ranking about priorities -->
+      <button id="Back" onclick="goBack()" class="text-blue-600 hover:underline hidden">Quay lại</button>
       <nav class="flex flex-row space-x-4"> <!-- Create space between the child elements [x-4 -> create 16 px space between them by row, y-4 -> same space but by column] -->
         <a href="#" class="text-blue-600 hover:underline" onclick="showPage('KT')">Kiểm tra</a>
         <a href="#" class="text-blue-600 hover:underline" onclick="showPage('TT')">Thử thách</a>
         <a href="#" class="text-blue-600 hover:underline" onclick="showPage('BT')">Bài tập</a>
-        <button id="Back" onclick="goBack()" class="text-blue-600 hover:underline hidden">Quay lại</button>
       </nav>
     </div>
   </header>
@@ -159,7 +159,6 @@
     // Hiện trang mới
     document.getElementById(pageId).classList.remove('hidden');
     // Thêm vào lịch sử
-    pageHistory.push(pageId);
     if (pageHistory[pageHistory.length - 1] !== pageId) {
   pageHistory.push(pageId);
 }

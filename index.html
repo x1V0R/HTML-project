@@ -151,41 +151,34 @@
       document.getElementById("result").innerText = "Bạn được " + score + " / 2 điểm!";
     }
 
-    let pageHistory = [];
+  let pageHistory = [];
 
-    function goToPage(pageId) {
-      // Ẩn tất cả các trang
-      document.querySelectorAll('.page').forEach(el => el.classList.remove('visible'));
-      // Hiện trang mới
-      document.getElementById(pageId).classList.add('visible');
-      // Thêm vào lịch sử
-      pageHistory.push(pageId);
-    }
-
-    function goBack() {
-      // Xóa trang hiện tại khỏi lịch sử
-      pageHistory.pop();
-      // Xem trang trước là gì, nếu không có thì về page1
-      const prev = pageHistory.length ? pageHistory[pageHistory.length - 1] : 'mainScreen';
-      // Ẩn tất cả trang
-      document.querySelectorAll('.page').forEach(el => el.classList.remove('visible'));
-      // Hiện trang trước
-      document.getElementById(prev).classList.add('visible');
-    }
-    // Khi mở trang, mặc định page1 trong history
-    window.onload = function() {
-      pageHistory = ['mainScreen'];
-    };
-
-    function showPage(pageId) {
+function goToPage(pageId) {
   // Ẩn tất cả các trang
-  document.getElementById('mainScreen').classList.add('hidden');
-  document.getElementById('testScreen').classList.add('hidden');
-  document.getElementById('challengeScreen').classList.add('hidden');
-  document.getElementById('exerciseScreen').classList.add('hidden');
-  // Hiện trang được chọn
+  document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
+  // Hiện trang mới
   document.getElementById(pageId).classList.remove('hidden');
+  // Thêm vào lịch sử
+  pageHistory.push(pageId);
 }
+
+function goBack() {
+  // Xóa trang hiện tại khỏi lịch sử
+  pageHistory.pop();
+  // Xem trang trước là gì, nếu không có thì về mainScreen
+  const prev = pageHistory.length ? pageHistory[pageHistory.length - 1] : 'mainScreen';
+  // Ẩn tất cả trang
+  document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
+  // Hiện trang trước
+  document.getElementById(prev).classList.remove('hidden');
+}
+
+window.onload = function() {
+  pageHistory = ['mainScreen'];
+  // Đảm bảo hiển thị đúng trang đầu
+  document.querySelectorAll('.page').forEach(el => el.classList.add('hidden'));
+  document.getElementById('mainScreen').classList.remove('hidden');
+};
  
   </script>
 

@@ -181,6 +181,7 @@
     if (pageHistory[pageHistory.length - 1] !== pageId) {
   pageHistory.push(pageId);
 }
+  }
 
   function goBack() {
     // Xóa trang hiện tại khỏi lịch sử
@@ -272,15 +273,6 @@
     chatInput.addEventListener('keydown', function(e) {
       if (e.key === "Enter") sendMessage();
     });
-
-    const logo = document.getElementById('ai');
-    const btnBack = document.getElementById('Back');
-    if (prev === 'mainScreen') {
-      logo.classList.remove('hidden');
-      btnBack.classList.add('hidden');
-    } else {
-      logo.classList.add('hidden');
-      btnBack.classList.remove('hidden');
     
   </script>
 

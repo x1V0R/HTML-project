@@ -111,7 +111,7 @@
     <!-- Nhập và gửi -->
     <div class="flex border-t border-gray-200 bg-white">
       <input id="ai-input" type="text" placeholder="Nhập tâm sự..." class="flex-1 px-3 py-2 text-sm focus:outline-none rounded-bl-xl" />
-      <button id="aisend" class="px-4 py-2 bg-blue-700 text-white font-semibold rounded-br-xl hover:bg-blue-800">Gửi</button>
+      <button id="ai-send" class="px-4 py-2 bg-blue-700 text-white font-semibold rounded-br-xl hover:bg-blue-800">Gửi</button>
     </div>
   </div>
       <h2 class="text-2xl font-semibold mb-4">Chào mừng bạn đến với ứng dụng</h2>
@@ -226,7 +226,7 @@
     let isSending = false;
 
     // Thay bằng API key OpenAI của bạn
-    const OPENAI_API_KEY = "YOUR_OPENAI_API_KEY";
+    const OPENAI_API_KEY = "";
 
     async function sendMessage() {
       if (isSending) return;

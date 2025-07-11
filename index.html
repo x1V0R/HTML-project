@@ -96,6 +96,24 @@
   <main class="max-w-7xl mx-auto px-4 py-8">
     <div id="mainScreen" class="page">
     <section class="mb-8"> <!-- [mb - Margin below, ma - Margin above] -->
+      
+           <!-- Chatbox AI Tâm Lý (chỉ xuất hiện ở trang chủ) -->
+  <div id="ai" class="fixed bottom-6 right-6 w-full max-w-xs sm:max-w-md bg-white rounded-xl shadow-2xl z-50 flex flex-col">
+    <!-- Header -->
+    <div class="flex items-center justify-between px-4 py-3 bg-blue-700 rounded-t-xl">
+      <span class="font-bold text-white">AI Tâm Lý</span>
+      <button id="ai-close" title="Đóng" class="text-white text-xl hover:text-red-200">&times;</button>
+    </div>
+    <!-- Nội dung chat -->
+    <div id="ai-body" class="flex-1 px-4 py-2 overflow-y-auto text-sm space-y-2 bg-gray-50" style="height:220px;">
+      <div class="italic text-gray-600">Chào bạn, mình là AI Tâm Lý. Hãy chia sẻ điều bạn muốn nói nhé!</div>
+    </div>
+    <!-- Nhập và gửi -->
+    <div class="flex border-t border-gray-200 bg-white">
+      <input id="ai-input" type="text" placeholder="Nhập tâm sự..." class="flex-1 px-3 py-2 text-sm focus:outline-none rounded-bl-xl" />
+      <button id="aisend" class="px-4 py-2 bg-blue-700 text-white font-semibold rounded-br-xl hover:bg-blue-800">Gửi</button>
+    </div>
+  </div>
       <h2 class="text-2xl font-semibold mb-4">Chào mừng bạn đến với ứng dụng</h2>
       <p class="text-gray-700">Đây là nơi nội dung chính của bạn sẽ hiển thị.</p>
     </section>
@@ -122,24 +140,6 @@
       <h2 class="text-2xl font-bold mb-4">Đây là trang Bài tập</h2>
       <p>Nội dung bài tập ở đây.</p>
     </div>
-
-     <!-- Chatbox AI Tâm Lý (chỉ xuất hiện ở trang chủ) -->
-  <div id="ai-chatbox" class="fixed bottom-6 right-6 w-full max-w-xs sm:max-w-md bg-white rounded-xl shadow-2xl z-50 flex flex-col">
-    <!-- Header -->
-    <div class="flex items-center justify-between px-4 py-3 bg-blue-700 rounded-t-xl">
-      <span class="font-bold text-white">AI Tâm Lý</span>
-      <button id="ai-chatbox-close" title="Đóng" class="text-white text-xl hover:text-red-200">&times;</button>
-    </div>
-    <!-- Nội dung chat -->
-    <div id="ai-chatbox-body" class="flex-1 px-4 py-2 overflow-y-auto text-sm space-y-2 bg-gray-50" style="height:220px;">
-      <div class="italic text-gray-600">Chào bạn, mình là AI Tâm Lý. Hãy chia sẻ điều bạn muốn nói nhé!</div>
-    </div>
-    <!-- Nhập và gửi -->
-    <div class="flex border-t border-gray-200 bg-white">
-      <input id="ai-chatbox-input" type="text" placeholder="Nhập tâm sự..." class="flex-1 px-3 py-2 text-sm focus:outline-none rounded-bl-xl" />
-      <button id="ai-chatbox-send" class="px-4 py-2 bg-blue-700 text-white font-semibold rounded-br-xl hover:bg-blue-800">Gửi</button>
-    </div>
-  </div>
   </main>
   
   <!-- Footer -->
@@ -181,18 +181,6 @@
     if (pageHistory[pageHistory.length - 1] !== pageId) {
   pageHistory.push(pageId);
 }
-    
-    // Xử lý AQ và nút Back
-    const logo = document.getElementById('Logo');
-    const btnBack = document.getElementById('Back');
-    if (pageId === 'mainScreen') {
-      logo.classList.remove('hidden');
-      btnBack.classList.add('hidden');
-    } else {
-      logo.classList.add('hidden');
-      btnBack.classList.remove('hidden');
-    }
-  }
 
   function goBack() {
     // Xóa trang hiện tại khỏi lịch sử
@@ -226,14 +214,14 @@
   };
 
  // Ẩn chatbox khi bấm nút đóng
-    document.getElementById('ai-chatbox-close').onclick = function() {
-      document.getElementById('ai-chatbox').style.display = 'none';
+    document.getElementById('ai-close').onclick = function() {
+      document.getElementById('ai').style.display = 'none';
     };
 
     // Chat logic
-    const chatBody = document.getElementById('ai-chatbox-body');
-    const chatInput = document.getElementById('ai-chatbox-input');
-    const sendBtn = document.getElementById('ai-chatbox-send');
+    const chatBody = document.getElementById('ai-body');
+    const chatInput = document.getElementById('ai-input');
+    const sendBtn = document.getElementById('ai-send');
     let isSending = false;
 
     // Thay bằng API key OpenAI của bạn
@@ -284,6 +272,15 @@
     chatInput.addEventListener('keydown', function(e) {
       if (e.key === "Enter") sendMessage();
     });
+
+    const logo = document.getElementById('ai');
+    const btnBack = document.getElementById('Back');
+    if (prev === 'mainScreen') {
+      logo.classList.remove('hidden');
+      btnBack.classList.add('hidden');
+    } else {
+      logo.classList.add('hidden');
+      btnBack.classList.remove('hidden');
     
   </script>
 
